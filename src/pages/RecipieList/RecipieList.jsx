@@ -47,7 +47,7 @@ const RecipeList = () => {
 
   return (
     <div className="recipe-list">
-      <h1>Meal Recipes</h1>
+      <center><h1>Ezz Recipes</h1></center>
       
       {/* Search Form */}
       <form onSubmit={handleSearchSubmit} className="search-form">
