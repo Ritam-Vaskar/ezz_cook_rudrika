@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 const HomeSection = () => {
   return (
     <section className="home-section">
-      <HeroCarousel /> {/* Calling the HeroCarousel component */}
+      <HeroCarousel /> 
       <div className="home-content">
         <h1>Welcome to Recipe Book</h1>
         <p>Explore a variety of delicious recipes and share your favorites with others!</p>
