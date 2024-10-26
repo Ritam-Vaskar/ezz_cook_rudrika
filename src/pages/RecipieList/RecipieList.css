@@ -2,9 +2,10 @@
 .meals-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-    margin: 20px 0;
+    grid-gap: 10px;
+    margin: 10px 0;
     justify-items: center;
+    min-height: 400px;
 }
 .search-form {
     display: flex;

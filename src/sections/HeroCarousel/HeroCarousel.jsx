@@ -1,7 +1,6 @@
 // src/sections/HeroCarousel/HeroCarousel.js
-import React from 'react';
-import Slider from 'react-slick';
-import './HeroCarousel.css'; // Import your standard CSS
+import React, { useState, useEffect } from 'react';
+import './HeroCarousel.css';
 
 const HeroCarousel = () => {
   const images = [
@@ -10,34 +9,31 @@ const HeroCarousel = () => {
     "https://img.freepik.com/free-photo/close-up-street-food-neon-light_23-2151571607.jpg",
     "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528",
     "https://img.freepik.com/premium-photo/culinary-creations-culinary-mastery-gastronomic-art-delicious-visuals-tasty-delights-food-aesth_497046-451.jpg"
-   
   ];
-  
-  
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    fade: true,
-    pauseOnHover: true,
-    arrows: false,// Hide next/previous buttons for a cleaner look
-    lazyLoad : 'ondemand'
-  };
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000); // Change every 4 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [images.length]);
 
   return (
-    <section className="hero-section">
-      <Slider {...settings}>
-        {images.map((image, indexx) => (
-          <div key={indexx} className="hero-slide">
-            <img src={image} alt={`Slide ${indexx + 1}`} className="hero-image" />
-          </div>
-        ))}
-      </Slider>
+    <section className="hero-carousel">
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`carousel-slide ${index === currentImageIndex ? 'active' : ''}`}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      ))}
+      <div className="carousel-overlay">
+        <h1>Welcome to EzzCook</h1>
+        <p>Explore delicious recipes and culinary inspiration.</p>
+      </div>
     </section>
   );
 };

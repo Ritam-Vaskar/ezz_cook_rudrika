@@ -1,34 +1,44 @@
-.hero-section {
+/* src/sections/HeroCarousel/HeroCarousel.module.css */
+
+.hero-carousel {
     position: relative;
-    width: 100%;
-    height: 75vh; /* Set a fixed height for the section (adjust as needed) */
+    width: 100vw;
+    height: 90vh;
     overflow: hidden;
   }
   
-  .hero-slide {
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
   }
   
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: fill; 
-    aspect-ratio: 23 / 9;  /*Maintain aspect ratio */
-  }
-  
-  /* Dots style */
-  .slick-dots {
-    bottom: 20px; /* Position at the bottom of the section */
-  }
-  
-  .slick-dots li button:before {
-    font-size: 14px;
-    color: white;
-    opacity: 0.7;
-  }
-  
-  .slick-dots li.slick-active button:before {
-    color: white;
+  .carousel-slide.active {
     opacity: 1;
   }
+  
+  .carousel-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+  }
+  
+  .carousel-overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-overlay p {
+    font-size: 1.5rem;
+  }
+  
